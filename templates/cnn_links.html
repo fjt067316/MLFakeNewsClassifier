@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=”en”>
+ <head>
+  <meta charset=”UTF-8">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1.0">
+  <meta http-equiv=”X-UA-Compatible” content=”ie=edge”>
+  <title>Webscraper in Python using Flask</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+     <style>
+         .grid-container {
+               display: grid;
+               grid-template-columns: repeat(5, 1fr);
+               grid-template-rows: repeat(5, 1fr);
+               grid-column-gap: 10px;
+               grid-row-gap: 10px;
+               background-color: #2d394d;
+               padding: 10px;
+            }
+
+          .grid-item {
+                background-color: rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+            }
+
+     </style>
+ </head>
+ <body>
+
+  <div class="w3-bar w3-black w3-xlarge">
+        <a href="../" class="w3-button w3-bar-item">Home</a>
+  		<a href="/fox_links/" class="w3-button w3-bar-item">Fox</a>
+  		<a href="/cnn_links/" class="w3-button w3-bar-item">CNN</a>
+  		<a href="/nbc_links/" class="w3-button w3-bar-item">NBC</a>
+	</div>
+    <div class="grid-container">
+        {% for elem in headline %}
+            <div class="grid-item"><a href= {{ elem.url }}> {{ elem.headline }} </a>
+            <form action="/cnn_validity/" method = "post">
+                <input type="submit" value="check" >
+                <!-- second input button with forum post data, eg forum name and value like a dictionary and is hidden to avoid weird names on buttons as value="" is the button name too, the first input is just the submit button -->
+                <input name="url" type="hidden" value={{ elem.url }} >
+                </div>
+            </form>
+        {% endfor %}
+    </div>
+ </body>
+</html>

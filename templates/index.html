@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang=”en”>
+ <head>
+  <meta charset=”UTF-8">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1.0">
+  <meta http-equiv=”X-UA-Compatible” content=”ie=edge”>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+  <title>Webscraper in Python using Flask</title>
+
+   <style>
+        .footer {
+          position: fixed;
+          left: 0;
+          bottom: 0;
+          width: 100%;
+         background-color: red;
+         color: white;
+         text-align: center;
+        }
+
+        div.relative{
+            position: relative;
+            right: 50px
+        }
+
+        div.relative2{
+            position: relative;
+            left: 120px
+            top: 20px
+        }
+
+        div.relative3{
+            position: relative;
+            top: -16px
+        }
+
+        .gap {
+            margin-right: 35px;
+        }
+    </style>
+
+ </head>
+ <body>
+  <!-- Variables from Flask here -->
+  <!-- use {{ var | safe }} to display html variables -->
+
+	<div class="w3-bar w3-black w3-xlarge">
+        <a href="" class="w3-button w3-bar-item">Home</a>
+  		<a href="/fox_links/" class="w3-button w3-bar-item">Fox</a>
+  		<a href="/cnn_links/" class="w3-button w3-bar-item">CNN</a>
+  		<a href="/nbc_links/" class="w3-button w3-bar-item">NBC</a>
+	</div>
+
+    <section>
+        <div class="w3-section relative3" style="max-width:2000px">
+        <!-- jinja source for images is weird and containted in a 'static' file in same directory level as 'templates'-->
+            <img src="{{ url_for('static', filename='hotNews.jpg') }}" style="width:35%" class="w3-left gap">
+  		    <h2 class="w3-center">Unreliable news</h2>
+  		    <p class="w3-center"><i>time to examine</i></p>
+            <p class="relative"><br>To use this website click on any of the news channel names in the navigation bar.<br>
+            A page containing current news article headlines will appear; further they will be hyperlinked to the news article.<br>
+            To the bottom of the article headline will be a button that when pressed will asses the validity of the article using a machine learning classifier.</p>
+	    </div>
+    </section>
+
+
+    <!-- <div class="w3-container w3-center" style="max-width:600px">
+  		<h2 class="w3-wide">Unreliable news</h2>
+  		<p class="w3-opacity"><i>time to examine</i></p>
+	</div> -->
+    <div class="w3-container w3-center" style="max-width:600px"></div>
+    <div class="w3-container w3-center" style="max-width:600px"></div>
+   <!-- <p><a href= '/fox_links'> test </a></p> -->
+<!-- three quick links at bottom -->
+    <section class="w3-row-padding w3-center w3-light-grey footer">
+        <article class="w3-third">
+            <p>Fox</p>
+            <img src="{{ url_for('static', filename='foxNews.jpg') }}" alt="Random Name" class="img-circle" style="width:50%">
+        </article>
+        <article class="w3-third">
+            <p>CNN</p>
+            <img src="{{ url_for('static', filename='cnnLogo.png') }}" alt="Random Name" style="width:50%">
+        </article>
+        <article class="w3-third">
+            <p>NBC</p>
+            <img src="{{ url_for('static', filename='nbc.png') }}" alt="Random Name" style="width:50%">
+        </article>
+    </section>
+
+ </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang=”en”>
+ <head>
+  <meta charset=”UTF-8">
+  <meta name=”viewport” content=”width=device-width, initial-scale=1.0">
+  <meta http-equiv=”X-UA-Compatible” content=”ie=edge”>
+  <title>Webscraper in Python using Flask</title>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/3/w3.css">
+     <style>
+         .grid-container {
+               display: grid;
+               grid-template-columns: repeat(5, 1fr);
+               grid-template-rows: repeat(5, 1fr);
+               grid-column-gap: 10px;
+               grid-row-gap: 10px;
+               background-color: #2d394d;
+               padding: 10px;
+            }
+
+          .grid-item {
+                background-color: rgba(255, 255, 255, 0.8);
+                border: 1px solid rgba(0, 0, 0, 0.8);
+                padding: 20px;
+                font-size: 30px;
+                text-align: center;
+            }
+
+     </style>
+ </head>
+ <body>
+
+  <div class="w3-bar w3-black w3-xlarge">
+        <a href="../" class="w3-button w3-bar-item">Home</a>
+  		<a href="/fox_links/" class="w3-button w3-bar-item">Fox</a>
+  		<a href="/cnn_links/" class="w3-button w3-bar-item">CNN</a>
+  		<a href="/nbc_links/" class="w3-button w3-bar-item">NBC</a>
+	</div>
+    <div class="grid-container">
+        {% for elem in headline %}
+            <div class="grid-item"><a href= {{ elem.url }}> {{ elem.headline }} </a>
+<!-- if the url of one of the headline link pairs is the same as the url passed through the predictor, display the prediction-->
+                {% if elem.url == url %}
+                    <p style="color:#b56964;">{{ pred }}</p>
+                    <input type="button" value="check another article" onclick="location.href='../fox_links'">
+                {% endif %}
+            </div>
+        {% endfor %}
+    </div>
+ </body>
+</html>
